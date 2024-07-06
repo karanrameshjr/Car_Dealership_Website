@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account</title>
+    {% load static %}
+    <!-- Add your CSS styles here -->
+    <!-- The following line imports the 'register.css' file from the 'static/CSS' directory -->
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/user_register.css' %}">
+    <style>
+        /* Custom animation styles */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        /* Adjust input size and styling */
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <!-- The main heading for the page, indicating the action to be taken -->
+        <h2>Create an Account</h2>
+        <!-- The form element for user registration -->
+        <form method="post" action="{% url 'user_register' %}">
+            {% csrf_token %}
+            <!-- The label and input field for the 'username' field -->
+            <!-- The 'label' element associates a description with an input field -->
+            <!-- The 'input' element defines a field for user input -->
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <!-- The label and input field for the 'email' field -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <!-- The label and input field for the 'password' field -->
+            <!-- The 'password' input type hides the input characters for security reasons -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <!-- The submit button to send the form data to the server -->
+            <button type="submit">Register</button>
+        </form>
+        <!-- A message for users that already have an account -->
+        <p>Already have an account? <a href="{% url 'user_login' %}">Log in</a></p>
+
+        <!-- Hidden success message -->
+        <div id="success-message" style="display: none;">
+            Registration successful!
+        </div>
+    </div>
+    <!-- Include any JavaScript libraries needed for the page -->
+    <!-- In this example, using 'jquery' from the 'static/JS' directory -->
+    <script src="{% static 'JS/jquery.js' %}"></script>
+    <!-- Add your custom JavaScript code here -->
+    <!-- The following code adds a custom style to the form when it is submitted -->
+    <!-- This code should be placed within the 'script' tag above -->
+    <script>
+    $('form').on('submit', function (e) {
+        // Show success message
+        $('#success-message').show();
+        
+        // Optional: Prevent default form submission
+        // e.preventDefault();
+    });
+    </script>
+</body>
+</html>

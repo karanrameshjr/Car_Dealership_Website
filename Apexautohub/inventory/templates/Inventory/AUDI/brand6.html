@@ -1,0 +1,202 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audi Cars</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/inventory.css' %}">
+    <style>
+        /* Custom styles for car list */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #e6e6fa; /* Background color for the car box */
+            border: 1px solid #4b0082; /* Border color */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Spacing inside the car box */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a 3D effect */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+            position: relative; /* Positioning for pseudo-elements */
+            overflow: hidden; /* Ensure pseudo-elements are contained */
+        }
+
+        li:hover {
+            transform: scale(1.05); /* Enlarge the car box on hover */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Adjusted box shadow on hover */
+        }
+
+        .car-image {
+            max-width: 120px; /* Adjust the size as needed */
+            margin-right: 20px;
+            border-radius: 10px; /* Rounded corners for the image */
+            transition: transform 0.2s ease;
+        }
+
+        li:hover .car-image {
+            transform: scale(1.1); /* Slightly enlarge the car image on hover */
+        }
+
+        .car-details {
+            flex: 1;
+        }
+
+        /* Additional CSS for better styling */
+        .car-details a {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4b0082; /* Link color */
+            text-decoration: none;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
+        }
+
+        .car-details a:hover {
+            color: #ff4500; /* Change link color on hover */
+            text-shadow: 0 0 5px rgba(255, 69, 0, 0.5); /* Add text shadow on hover */
+        }
+
+        .car-details p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #4b0082; /* Text color */
+            transition: color 0.2s ease;
+        }
+
+        li:hover .car-details p {
+            color: #330066; /* Darken text color on hover */
+        }
+
+        /* Adding edge-cutting effects with pseudo-elements */
+        li::before,
+        li::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff4500;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+
+        li::before {
+            top: 0;
+            left: -100%;
+            transform: skewX(30deg);
+        }
+
+        li::after {
+            bottom: 0;
+            right: -100%;
+            transform: skewX(-30deg);
+        }
+
+        li:hover::before {
+            left: 100%;
+        }
+
+        li:hover::after {
+            right: 100%;
+        }
+
+        li .car-details {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Enhanced styles for price and additional details */
+        .price {
+            font-size: 20px;
+            color: #ff4500; /* Price color */
+            font-weight: bold;
+        }
+
+        .details {
+            font-size: 16px;
+            color: #4b0082; /* Details color */
+        }
+
+        .details span {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Audi Cars</h1>
+
+    <ul>
+        <li>
+            <img class="car-image" src="{% static 'images/q71.webp' %}" alt="Audi Q7">
+            <div class="car-details">
+                <a href="{% url 'audi1' %}">Audi Q7</a>
+                <p class="price">Rs.86.92 - 97.84 Lakh* (Price in Bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Petrol</span>
+                    <span>Mileage: 11.21 kmpl</span>
+                    <span>Transmission: Automatic</span>
+                    <span>Contact Dealer</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/q51.webp' %}" alt="Audi Q5">
+            <div class="car-details">
+                <a href="{% url 'audi2' %}">Audi Q5</a>
+                <p class="price">Rs.65.18 - 70.45 Lakh* (Price in bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Petrol</span>
+                    <span>Mileage: 13.47 kmpl</span>
+                    <span>Transmission: Automatic</span>
+                    <span>Contact Dealer</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/q31.webp' %}" alt="Audi Q3">
+            <div class="car-details">
+                <a href="{% url 'audi3' %}">Audi Q3</a>
+                <p class="price">Rs.43.81 - 54.65 Lakh* (Price in bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Petrol</span>
+                    <span>Transmission: Automatic</span>
+                    <span>Contact Dealer</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/a41.webp' %}" alt="Audi A4">
+            <div class="car-details">
+                <a href="{% url 'audi4' %}">Audi A4</a>
+                <p class="price">Rs.45.34 - 53.77 Lakh* (Price in bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Petrol</span>
+                    <span>Transmission: Automatic</span>
+                    <span>Contact Dealer</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/rs51.webp' %}" alt="Audi RS5">
+            <div class="car-details">
+                <a href="{% url 'audi5' %}">Audi RS5</a>
+                <p class="price">Rs.1.13 Cr* (Price in bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Petrol</span>
+                    <span>Mileage: 8.8 kmpl</span>
+                    <span>Transmission: Automatic</span>
+                    <span>Contact Dealer</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <script src="{% static 'js/inventory.js' %}"></script>
+</body>
+</html>

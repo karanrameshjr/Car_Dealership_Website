@@ -1,0 +1,132 @@
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Hide overflow to prevent scrolling */
+}
+
+/* Container styles */
+.container {
+    position: relative; /* Position relative to contain pseudo-elements */
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    background: linear-gradient(45deg, #ff0000, #ffa500, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
+    background-size: 600% 600%;
+    animation: gradientBG 10s ease infinite;
+    /* overflow: hidden; */ /* Remove overflow: hidden */
+    z-index: 1; /* Set z-index to ensure elements inside the container are clickable */
+}
+
+@keyframes gradientBG {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Pseudo-element for cloudy effect */
+.container::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    animation: cloudyBG 20s linear infinite; /* Cloudy background animation */
+    z-index: -1; /* Set z-index to ensure the cloudy effect is behind the container content */
+}
+
+@keyframes cloudyBG {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(20px, 0);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Heading styles */
+h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    position: relative; /* Add position relative */
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 22px); /* Adjust width to accommodate border */
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Add transition effect */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3); /* Add box shadow */
+}
+
+/* Link styles */
+p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Add hover effect for input fields */
+input[type="text"]:hover,
+input[type="password"]:hover {
+    border-color: #007bff;
+}
+
+/* Add hover effect for links */
+a:hover {
+    color: #0056b3;
+}
+

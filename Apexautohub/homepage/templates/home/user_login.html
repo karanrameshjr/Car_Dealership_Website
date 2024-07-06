@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    {% load static %}
+    <!-- Add your CSS styles here -->
+    <!-- CSS file for this page is loaded below -->
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/user_login.css' %}">
+    <style>
+        /* Add your custom styles here */
+        /* Styles for the success message */
+        #login-success {
+            display: none;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign In</h2>
+        <form method="post" action="{% url 'user_login' %}">
+            {% csrf_token %}
+            <!-- Username form field -->
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <!-- Password form field -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <!-- Submit button -->
+            <button type="submit">Log In</button>
+        </form>
+        <!-- Link to registration page -->
+        <p>Don't have an account? <a href="{% url 'user_register' %}">Create an account</a></p>
+
+        <!-- Success message -->
+        <div id="login-success">Login successful!</div>
+    </div>
+
+    <!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // Function to show the success message
+        function showSuccessMessage() {
+            $('#login-success').show(); // Show the success message
+            setTimeout(function() {
+                $('#login-success').hide(); // Hide the success message after 3 seconds
+            }, 3000);
+        }
+
+        // Check if the URL contains the 'login_success' parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const loginSuccess = urlParams.has('login_success');
+
+        // If 'login_success' parameter is present, show the success message
+        if (loginSuccess) {
+            showSuccessMessage();
+        }
+    </script>
+</body>
+</html>

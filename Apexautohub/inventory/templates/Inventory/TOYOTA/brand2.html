@@ -1,0 +1,214 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota Cars</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/inventory.css' %}">
+    <style>
+        /* Custom styles for car list */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #e0f7fa; /* Background color for the car box */
+            border: 1px solid #00838f; /* Border color */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Spacing inside the car box */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a 3D effect */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+            position: relative; /* Positioning for pseudo-elements */
+            overflow: hidden; /* Ensure pseudo-elements are contained */
+        }
+
+        li:hover {
+            transform: scale(1.05); /* Enlarge the car box on hover */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Adjusted box shadow on hover */
+        }
+
+        .car-image {
+            max-width: 120px; /* Adjust the size as needed */
+            margin-right: 20px;
+            border-radius: 10px; /* Rounded corners for the image */
+            transition: transform 0.2s ease;
+        }
+
+        li:hover .car-image {
+            transform: scale(1.1); /* Slightly enlarge the car image on hover */
+        }
+
+        .car-details {
+            flex: 1;
+        }
+
+        /* Additional CSS for better styling */
+        .car-details a {
+            font-size: 24px;
+            font-weight: bold;
+            color: #006064; /* Link color */
+            text-decoration: none;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
+        }
+
+        .car-details a:hover {
+            color: #004d40; /* Change link color on hover */
+            text-shadow: 0 0 5px rgba(0, 77, 64, 0.5); /* Add text shadow on hover */
+        }
+
+        .car-details p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #004d40; /* Text color */
+            transition: color 0.2s ease;
+        }
+
+        li:hover .car-details p {
+            color: #00251a; /* Darken text color on hover */
+        }
+
+        /* Adding edge-cutting effects with pseudo-elements */
+        li::before,
+        li::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #006064;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+
+        li::before {
+            top: 0;
+            left: -100%;
+            transform: skewX(30deg);
+        }
+
+        li::after {
+            bottom: 0;
+            right: -100%;
+            transform: skewX(-30deg);
+        }
+
+        li:hover::before {
+            left: 100%;
+        }
+
+        li:hover::after {
+            right: 100%;
+        }
+
+        li .car-details {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Enhanced styles for price and additional details */
+        .price {
+            font-size: 20px;
+            color: #00838f; /* Price color */
+            font-weight: bold;
+        }
+
+        .details {
+            font-size: 16px;
+            color: #00796b; /* Details color */
+        }
+
+        .details span {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Toyota Cars</h1>
+
+    <ul>
+        <li>
+            <img class="car-image" src="{% static 'images/fortuner1.webp' %}" alt="Toyota Fortuner">
+            <div class="car-details">
+                <a href="{% url 'toyota1' %}">Toyota Fortuner</a>
+                <p class="price">Rs.33.43 - 51.44 Lakh* (Price in Bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Diesel / Petrol</span>
+                    <span>Mileage: 10 kmpl</span>
+                    <span>Transmission: Manual/Automatic</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/Innova1.webp' %}" alt="Toyota Innova Crysta">
+            <div class="car-details">
+                <a href="{% url 'toyota2' %}">Toyota Innova Crysta</a>
+                <p class="price">Rs.19.99 - 26.55 Lakh* (Price in Bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Diesel</span>
+                    <span>Transmission: Manual</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/Cruiser1.webp' %}" alt="Toyota Land Cruiser 300">
+            <div class="car-details">
+                <a href="{% url 'toyota3' %}">Toyota Land Cruiser 300</a>
+                <p class="price">Rs.2.10 Cr* (Price in Bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Diesel</span>
+                    <span>Mileage: 11 kmpl</span>
+                    <span>Transmission: Automatic</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/Urban1.webp' %}" alt="Toyota Urban Cruiser Hyryder">
+            <div class="car-details">
+                <a href="{% url 'toyota4' %}">Toyota Urban Cruiser Hyryder</a>
+                <p class="price">Rs.11.14 - 20.19 Lakh* (Price in Bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Petrol / CNG</span>
+                    <span>Mileage: 19.39 to 27.97 kmpl</span>
+                    <span>Transmission: Manual/Automatic</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/Hilux1.webp' %}" alt="Toyota Hilux">
+            <div class="car-details">
+                <a href="{% url 'toyota5' %}">Toyota Hilux</a>
+                <p class="price">Rs.30.40 - 37.90 Lakh* (Price in Bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Diesel</span>
+                    <span>Transmission: Manual/Automatic</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/camry1.webp' %}" alt="Toyota Camry">
+            <div class="car-details">
+                <a href="{% url 'toyota6' %}">Toyota Camry</a>
+                <p class="price">Rs.46.17 Lakh* (Price in Bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Petrol</span>
+                    <span>Transmission: Automatic</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <script src="{% static 'js/inventory.js' %}"></script>
+</body>
+</html>

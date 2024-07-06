@@ -1,0 +1,325 @@
+/* Apply 3D background effect to the entire webpage */
+body {
+    background: linear-gradient(45deg, #4e4e4e, #000) fixed;
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    color: #fff; /* Text color for better visibility */
+    font-family: 'Arial', sans-serif; /* Specify a font family */
+}
+
+/* Add animation for the 3D effect */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Header Styles */
+header {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for header */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    transform-style: preserve-3d; /* Preserve 3D transformations */
+}
+
+/* Your existing logo */
+.navbar-brand {
+    position: relative; /* Add relative positioning to the .navbar-brand */
+}
+
+.navbar-brand img {
+    max-width: 100%;
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+    background-color: #777; /* Add background color (grey) */
+    padding: 5px; /* Add padding to create a border effect */
+    border: 2px solid #222; /* Add a darker grey border */
+    border-radius: 5px; /* Add border radius for rounded corners */
+}
+
+/* Styles for the background behind the logo */
+.navbar-brand::before {
+    content: "";
+    position: absolute;
+    top: 50%; /* Vertically center the background */
+    left: 50%; /* Horizontally center the background */
+    transform: translate(-50%, -50%); /* Center the background */
+    width: 80px; /* Adjust the width of the background */
+    height: 80px; /* Adjust the height of the background */
+    background-color: #222; /* Background color (dark grey) */
+    border-radius: 50%; /* Create a circular background */
+    z-index: -1; /* Place the background behind the logo */
+}
+
+/* Styles for the line below the logo */
+.navbar-brand::after {
+    content: "";
+    display: block;
+    height: 3px; /* Set the height of the line */
+    background-color: #777; /* Set the line color to grey */
+    margin-top: 5px; /* Adjust the spacing between the logo and the line */
+    transition: width 0.3s ease; /* Add a smooth transition for the line width */
+    width: 0; /* Initially, set the line width to 0 */
+}
+
+/* Apply a width to the line on hover */
+.navbar-brand:hover::after {
+    width: 100%; /* Set the line width to 100% on hover */
+}
+
+/* Navigation Links */
+.navbar-nav .nav-item .nav-link {
+    color: #fff; /* Text color for navigation links */
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s, transform 0.3s ease; /* Add smooth transition effects */
+    transform-style: preserve-3d; /* Preserve 3D transformations */
+    background-color: rgba(0, 0, 0, 0.7); /* Background color for navigation links */
+}
+
+/* Apply 3D effect on hover */
+.navbar-nav .nav-item .nav-link:hover {
+    color: #007bff; /* Change the color on hover */
+    background-color: rgba(255, 255, 255, 0.2); /* Background color when hovered */
+    transform: translateY(-2px) translateZ(4px); /* Move up and slightly forward */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+}
+
+/* Carousel Styles */
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+
+.carousel-inner img:hover {
+    transform: scale(1.1); /* Scale up the images on hover */
+}
+
+/* Main Content Styles */
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for content */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d; /* Preserve 3D transformations */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+
+.container:hover {
+    transform: rotateY(5deg); /* Rotate the main content slightly on hover */
+}
+
+/* Subscription Box Styles */
+.subscription-box {
+    background-color: #f5f5f5; /* Background color for the subscription box */
+    padding: 20px; /* Padding for the subscription box */
+    border-radius: 5px; /* Rounded corners for the subscription box */
+    margin-top: 20px; /* Add margin on top of the subscription box */
+    color: #000; /* Text color for better visibility */
+}
+
+.subscription-box h2 {
+    font-size: 24px;
+}
+
+/* Subscription Form Styles */
+.subscription-form .form-group {
+    margin-bottom: 15px;
+}
+
+.subscription-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Add a border for input fields */
+}
+
+.subscription-form button {
+    background-color: #007bff; /* Background color (blue) */
+    color: #fff; /* Text color (white) */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.subscription-form button:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+}
+
+/* New Subscription Box Styles */
+.new-subscription-box {
+    background-color: #f9f9f9; /* Background color for the new subscription box */
+    padding: 20px; /* Padding for the new subscription box */
+    border-radius: 5px; /* Rounded corners for the new subscription box */
+    margin-top: 20px; /* Add margin on top of the new subscription box */
+    color: #000; /* Text color for better visibility */
+}
+
+.new-subscription-box h2 {
+    font-size: 24px;
+}
+
+.new-subscription-form .form-group {
+    margin-bottom: 15px;
+}
+
+.new-subscription-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Add a border for input fields */
+}
+
+.new-subscription-form button {
+    background-color: #007bff; /* Background color (blue) */
+    color: #fff; /* Text color (white) */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.new-subscription-form button:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+}
+
+/* Social Media Logo Styles */
+.social-logos {
+    text-align: center;
+    margin-top: 20px;
+    transform-style: preserve-3d; /* Preserve 3D transformations */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+
+.social-logo {
+    display: inline-block;
+    margin-right: 20px;
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+
+.social-logo:last-child {
+    margin-right: 0;
+}
+
+.social-logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.social-logo:hover {
+    transform: scale(1.1); /* Enlarge on hover */
+}
+
+/* Small Picture Styles */
+.small-picture {
+    text-align: center;
+    margin-top: 20px;
+    position: relative; /* Position relative for positioning the logo */
+}
+
+.small-picture img {
+    max-width: 100%;
+}
+
+.small-picture p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #777;
+}
+
+/* Logo below the picture */
+.logo-below {
+    position: absolute; /* Position absolutely within the .small-picture container */
+    bottom: 0; /* Position at the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+}
+
+/* Footer Styles */
+footer {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for footer */
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    transform-style: preserve-3d; /* Preserve 3D transformations */
+}
+
+/* Style for the larger image */
+.large-image {
+    width: 90%; /* Adjust the width as needed */
+    max-height: 80vh; /* Adjust the maximum height as needed */
+    margin: 0 auto; /* Center the image horizontally */
+    position: relative; /* Ensure relative positioning for child elements */
+    
+    /* Add additional styles for positioning logos or other elements on top of the image */
+}
+
+/* Style for the logos on top of the image */
+.logo {
+    position: absolute;
+    /* Add top, left, right, or bottom properties to position the logos as needed */
+}
+
+/* Style for the dropdown menu */
+.dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.5); /* Background color with reduced opacity (adjust the alpha value as needed) */
+    border: 1px solid #ccc; /* Border color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+/* Style for dropdown items */
+.dropdown-item {
+    color: #333; /* Text color of dropdown items */
+    padding: 8px 16px; /* Spacing around dropdown items */
+    text-decoration: none; /* Remove underlines from links */
+    display: block; /* Display items as blocks */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+/* Style for the dropdown items on hover/focus */
+.dropdown-item:hover, .dropdown-item:focus {
+    background-color: #f5f5f5; /* Background color on hover/focus */
+    color: #333; /* Text color on hover/focus */
+}
+
+/* Style for the dropdown trigger (the link/button that opens the dropdown) */
+.nav-link.dropdown-toggle {
+    cursor: pointer; /* Change cursor to pointer on trigger */
+}
+
+/* Adjust the z-index to ensure the dropdown appears on top of other elements */
+.dropdown-menu {
+    z-index: 9999; /* Adjust the z-index as needed */
+}
+
+/* Position the dropdown to the right of the user account icon */
+.navbar-nav .nav-item.dropdown {
+    position: relative;
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Position the dropdown below the icon */
+    right: 0; /* Align the right edge of the dropdown with the icon */
+    left: auto;
+}
+
+/* Style for the images */
+.col-md-2 img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+}

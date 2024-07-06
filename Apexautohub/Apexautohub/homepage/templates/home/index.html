@@ -1,0 +1,297 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"> <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/styles.css' %}">
+    <title>Car Dealership</title>
+    <style>
+        /* Your custom CSS goes here */
+
+        /* Apply 3D background effect to the entire webpage */
+        body {
+            background: linear-gradient(45deg, #4e4e4e, #000) fixed;
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        /* Add animation for the 3D effect */
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Rest of your existing styles */
+        /* ... */
+
+        /* Custom CSS for positioning the features at the bottom of the carousel */
+        .carousel-container {
+            position: relative;
+        }
+
+        .feature-boxes {
+            background-color: rgba(0, 0, 0, 0.5); /* Background color for feature boxes */
+            padding: 20px; /* Padding for feature boxes */
+            border-radius: 5px; /* Rounded corners for feature boxes */
+        }
+
+        .feature-box {
+            color: #151414; /* Text color for better visibility */
+            text-align: center; /* Center-align text within feature boxes */
+            padding: 20px;
+            margin-bottom: 20px; /* Add margin between feature boxes */
+        }
+
+        .feature-box img {
+            max-width: 100%; /* Ensure the image fits within the box */
+            height: auto; /* Maintain aspect ratio of the image */
+        }
+
+        /* Location map section styles (customize as needed) */
+        .location-map {
+            background-color: #101213; /* Background color for the location map section */
+            color: #585050; /* Text color for the location map section */
+            padding: 20px; /* Padding for the location map section */
+            text-align: center; /* Center-align text within the location map section */
+        }
+
+        /* Subscription box styles */
+        .subscription-box {
+            background-color: #f5f5f5; /* Background color for the subscription box */
+            padding: 20px; /* Padding for the subscription box */
+            border-radius: 5px; /* Rounded corners for the subscription box */
+            margin-top: 20px; /* Add margin on top of the subscription box */
+        }
+
+        .subscription-form {
+            max-width: 400px; /* Set the max width of the subscription form */
+            margin: 0 auto; /* Center the subscription form horizontally */
+        }
+
+        /* Additional styling for Gmail box and social media logos */
+        .gmail-box {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .social-logos {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-logo {
+            display: inline-block;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- Your existing logo -->
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'images/logo.png' %}" alt="Car Dealership Logo" width="80">
+            </a>
+            
+            
+            <!-- User Account Icon -->
+                <div class="nav-item dropdown ml-auto" style="position: relative; z-index: 9999;"> <!-- Align to the right -->
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i> <!-- User Account Icon -->
+                        </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown" style="position: absolute;">
+                                    <a class="dropdown-item" href="{% url 'user_register' %}">Create an Account</a>
+                                        <a class="dropdown-item" href="{% url 'user_login' %}">Sign In</a>
+
+                            </div>
+                </div>
+
+             <!-- Toggle Button for Mobile -->
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    
+                    <!-- Link to the inventory page with a dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'inventory' %}" id="inventoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Inventory
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="inventoryDropdown">
+                            <a class="dropdown-item" href="{% url 'inventory' %}">New Cars</a>
+                            <a class="dropdown-item" href="#">Electric Cars</a>
+                            <a class="dropdown-item" href="#">Used Cars</a>
+                            <a class="dropdown-item" href="#">New Launches</a>
+                        </div>
+                    </li>
+                    
+                    <!-- Remaining navigation links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            About Us
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Latest Offers</a>
+                            <a class="dropdown-item" href="#">Car Brands</a>
+                            <a class="dropdown-item" href="#">Services</a>
+                            <a class="dropdown-item" href="#">Testimonials</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container-fluid car-slider">
+        <div id="carouselExample" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExample" data-slide-to="1"></li>
+                <li data-target="#carouselExample" data-slide-to="2"></li>
+                <li data-target="#carouselExample" data-slide-to="3"></li>
+                <li data-target="#carouselExample" data-slide-to="4"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'images/1.png' %}" alt="Home" />
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="{% url 'home' %}"> <!-- Replace 'homepage' with 'home' here -->
+                        <img src="{% static 'images/2.png' %}" class="d-block w-100" alt="Car 2">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="{% url 'home' %}"> <!-- Replace 'homepage' with 'home' here -->
+                        <img src="{% static 'images/3.png' %}" class="d-block w-100" alt="Car 3">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'images/4.png' %}" class="d-block w-100" alt="Car 4">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'images/5.png' %}" class="d-block w-100" alt="Car 5">
+                    </a>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <section class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="subscription-box">
+                        <h2>Subscribe for Updates</h2>
+                        <p>Stay informed about our latest offers and news.</p>
+                        <form id="subscription-form" class="subscription-form">
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                            </div>
+                            <button type="button" class="btn btn-primary" id="subscribe-button">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Add your image here with the appropriate source and alt text -->
+                    <img src="{% static 'images/subopp.png' %}" alt="Image Description" class="img-fluid">
+                </div>
+            </div>
+        </section>
+    </section>
+    
+    <!-- Footer Section -->
+    <footer class="container">
+        <!-- Map Section -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="location-map">
+                    <!-- Embed Google Map here (adjust the height) -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3150.949672230149!2d-122.41941698510125!3d37.77492987975303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808580b394eefdbb%3A0x71b9b1a8ff65e85b!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1625117398273!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- Social Media Logos -->
+            <div class="col-md-6">
+                <div class="social-logos text-right">
+                    <a href="https://www.facebook.com">
+                        <img src="{% static 'images/facebook.png' %}" alt="Facebook Logo" width="40">
+                    </a>
+                    <a href="https://www.instagram.com">
+                        <img src="{% static 'images/instagram.png' %}" alt="Instagram Logo" width="40">
+                    </a>
+                    <a href="https://www.twitter.com">
+                        <img src="{% static 'images/twitter.png' %}" alt="Twitter Logo" width="40">
+                    </a>
+                    <a href="https://www.linkedin.com">
+                        <img src="{% static 'images/linkedin.png' %}" alt="LinkedIn Logo" width="40">
+                    </a>
+                </div>
+                <!-- Small Picture -->
+                <div class="small-picture">
+                    <img src="{% static 'images/help-line.png' %}" alt="Large Image" class="large-image">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and jQuery (for the responsive navigation and carousel) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the subscription form element
+            const subscriptionForm = document.getElementById("subscription-form");
+    
+            // Handle form submission
+            subscriptionForm.addEventListener("submit", function (e) {
+                e.preventDefault(); // Prevent the default form submission behavior
+    
+                // You can add your own logic here to handle the subscription (e.g., sending data to a server)
+                const emailInput = subscriptionForm.querySelector("#email").value;
+    
+                // Example: Display an alert with the entered email
+                alert("Subscribed with email: " + emailInput);
+    
+                // Reset the form after submission
+                subscriptionForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>

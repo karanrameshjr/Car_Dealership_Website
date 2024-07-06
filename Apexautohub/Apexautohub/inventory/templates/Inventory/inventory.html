@@ -1,0 +1,195 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Inventory</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/inventory.css' %}">
+    <style>
+        /* Additional CSS for background container */
+        #background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Ensure the background is behind other elements */
+        }
+
+    /* Style for the navigation links (buttons) */
+    .nav-item {
+        margin-right: 10px; /* Adjust spacing between buttons */
+    }
+
+    .nav-link {
+        display: inline-block;
+        padding: 15px 30px; /* Adjust padding as needed */
+        background-color: #202122; /* Button background color */
+        color: #fff; /* Button text color */
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        text-decoration: none;
+        font-size: 18px; /* Button text size */
+        font-weight: bold; /* Button text weight */
+        text-transform: uppercase; /* Uppercase text */
+        letter-spacing: 1px; /* Letter spacing for text */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+    }
+
+    /* Hover effect for buttons */
+    .nav-link:hover {
+        background-color: #3b4b5c; /* Darker background color on hover */
+        transform: translateY(-3px); /* Move button up slightly on hover */
+    }
+
+    /* Active effect for buttons (when clicked) */
+    .nav-link:active {
+        background-color: #161718; /* Darker background color when clicked */
+    }
+
+    /* Add a subtle box shadow */
+    .nav-link {
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Customize box shadow */
+    }
+    </style>
+</head>
+<body>
+    <!-- 3D background container -->
+    <div id="background-container"></div>
+
+    <header>
+        <h1>Welcome to Our Car Dealership</h1>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Your existing logo -->
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/logo.png' %}" alt="Car Dealership Logo" width="80">
+        </a>
+
+        <!-- User Account Icon -->
+        <div class="nav-item dropdown ml-auto" style="position: relative; z-index: 9999;"> <!-- Align to the right -->
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i> <!-- User Account Icon -->
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown" style="position: absolute;">
+                <a class="dropdown-item" href="{% url 'user_register' %}">Create an Account</a>
+                <a class="dropdown-item" href="{% url 'user_login' %}">Sign In</a>
+            </div>
+        </div>
+
+        <!-- Toggle Button for Mobile -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Index View</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home View</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Car brand 3D boxes -->
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{% url 'brand1' %}">
+                    <div class="brand-box square-box brand-3d">
+                        <img src="{% static 'images/tata.webp' %}" alt="Brand 1">
+                        <h3>TATA</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="brand2.html">
+                    <div class="brand-box square-box brand-3d">
+                        <img src="{% static 'images/toyota.jpg' %}" alt="Brand 2">
+                        <h3>TOYOTA</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="brand3.html">
+                    <div class="brand-box square-box brand-3d">
+                        <img src="{% static 'images/Mercedes_logo_10.jpg' %}" alt="Brand 3">
+                        <h3>MERCEDES BENZ</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Add three more brand boxes below -->
+            <div class="col-md-4">
+                <a href="brand4.html">
+                    <div class="brand-box square-box brand-3d">
+                        <img src="{% static 'images/kia.jpg' %}" alt="Brand 4">
+                        <h3>KIA</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="brand5.html">
+                    <div class="brand-box square-box brand-3d">
+                        <img src="{% static 'images/ms.jpeg' %}" alt="Brand 5">
+                        <h3>MARUTHI SUZUKI</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="brand6.html">
+                    <div class="brand-box square-box brand-3d">
+                        <img src="{% static 'images/audi.jpeg' %}" alt="Brand 6">
+                        <h3>AUDI</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Include Three.js and your custom script for the 3D background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Your Three.js code for the 3D background goes here
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('background-container').appendChild(renderer.domElement);
+
+        // Create and add lighting
+        // ... (your lighting code)
+
+        // Load and add the custom 3D model
+        // ... (your 3D model loading and positioning code)
+
+        // Set the initial camera position
+        camera.position.z = 5;
+
+        // Animation loop
+        const animate = () => {
+            requestAnimationFrame(animate);
+
+            // Rotate the model or add other animations
+            // ... (your animation code)
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

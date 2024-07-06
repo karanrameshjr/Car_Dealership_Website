@@ -1,0 +1,135 @@
+/* Reset some default styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+/* Container styles */
+.container {
+    position: relative; /* Add position relative */
+    z-index: 1; /* Set a higher z-index to ensure container is above other elements */
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    background: linear-gradient(45deg, #ff0000, #ffa500, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
+    background-size: 600% 600%;
+    animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Pseudo-element for cloudy effect */
+.container::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    animation: cloudyBG 20s linear infinite; /* Cloudy background animation */
+    z-index: -1; /* Set a lower z-index to position behind container */
+}
+
+@keyframes cloudyBG {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(20px, 0);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Heading styles */
+h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for heading */
+}
+
+/* Form styles */
+form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    position: relative; /* Add position relative */
+    z-index: 1; /* Ensure form is above cloudy effect */
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 22px); /* Adjust width to accommodate border */
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s; /* Add transition effect for input fields */
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff; /* Change border color on hover and focus */
+    background-color: rgba(0, 123, 255, 0.1); /* Change background color on hover and focus */
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Add transition effect */
+}
+
+button[type="submit"]:hover {
+    background-color: #667f9b;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3); /* Add box shadow */
+}
+
+/* Link styles */
+p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s; /* Add transition effect */
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline; /* Add underline on hover */
+}

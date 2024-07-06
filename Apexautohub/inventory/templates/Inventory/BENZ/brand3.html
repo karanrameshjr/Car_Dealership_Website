@@ -1,0 +1,202 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercedes-Benz Cars</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/inventory.css' %}">
+    <style>
+        /* Custom styles for car list */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #f0f4f8; /* Background color for the car box */
+            border: 1px solid #1b263b; /* Border color */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Spacing inside the car box */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a 3D effect */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+            position: relative; /* Positioning for pseudo-elements */
+            overflow: hidden; /* Ensure pseudo-elements are contained */
+        }
+
+        li:hover {
+            transform: scale(1.05); /* Enlarge the car box on hover */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Adjusted box shadow on hover */
+        }
+
+        .car-image {
+            max-width: 120px; /* Adjust the size as needed */
+            margin-right: 20px;
+            border-radius: 10px; /* Rounded corners for the image */
+            transition: transform 0.2s ease;
+        }
+
+        li:hover .car-image {
+            transform: scale(1.1); /* Slightly enlarge the car image on hover */
+        }
+
+        .car-details {
+            flex: 1;
+        }
+
+        /* Additional CSS for better styling */
+        .car-details a {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1b263b; /* Link color */
+            text-decoration: none;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
+        }
+
+        .car-details a:hover {
+            color: #d4af37; /* Change link color on hover */
+            text-shadow: 0 0 5px rgba(212, 175, 55, 0.5); /* Add text shadow on hover */
+        }
+
+        .car-details p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #1b263b; /* Text color */
+            transition: color 0.2s ease;
+        }
+
+        li:hover .car-details p {
+            color: #0f1a29; /* Darken text color on hover */
+        }
+
+        /* Adding edge-cutting effects with pseudo-elements */
+        li::before,
+        li::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #d4af37;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+
+        li::before {
+            top: 0;
+            left: -100%;
+            transform: skewX(30deg);
+        }
+
+        li::after {
+            bottom: 0;
+            right: -100%;
+            transform: skewX(-30deg);
+        }
+
+        li:hover::before {
+            left: 100%;
+        }
+
+        li:hover::after {
+            right: 100%;
+        }
+
+        li .car-details {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Enhanced styles for price and additional details */
+        .price {
+            font-size: 20px;
+            color: #d4af37; /* Price color */
+            font-weight: bold;
+        }
+
+        .details {
+            font-size: 16px;
+            color: #1b263b; /* Details color */
+        }
+
+        .details span {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mercedes-Benz Cars</h1>
+
+    <ul>
+        <li>
+            <img class="car-image" src="{% static 'images/gla1.webp' %}" alt="Mercedes-Benz GLA">
+            <div class="car-details">
+                <a href="{% url 'benz1' %}">Mercedes-Benz GLA</a>
+                <p class="price">Rs.50.50 - 58.15 Lakh* (Price in Bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Diesel / Petrol</span>
+                    <span>Mileage: 17.4 to 18.9 kmpl</span>
+                    <span>Transmission: Automatic</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/gls1.webp' %}" alt="Mercedes-Benz GLS">
+            <div class="car-details">
+                <a href="{% url 'benz2' %}">Mercedes-Benz GLS</a>
+                <p class="price">Rs.1.32 - 2.96 Cr* (Price in Bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Diesel / Petrol</span>
+                    <span>Transmission: Automatic</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/glc1.webp' %}" alt="Mercedes-Benz GLC">
+            <div class="car-details">
+                <a href="{% url 'benz3' %}">Mercedes-Benz GLC</a>
+                <p class="price">Rs.74.45 - 75.45 Lakh* (Price in Bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Diesel / Petrol</span>
+                    <span>Mileage: 14.7 kmpl</span>
+                    <span>Transmission: Automatic</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/c1.webp' %}" alt="Mercedes-Benz C-Class">
+            <div class="car-details">
+                <a href="{% url 'benz4' %}">Mercedes-Benz C-Class</a>
+                <p class="price">Rs.58.60 - 62.70 Lakh* (Price in Bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Diesel / Petrol</span>
+                    <span>Mileage: 23 kmpl</span>
+                    <span>Transmission: Automatic</span>
+                    <span>Contact Dealer</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/e1.webp' %}" alt="Mercedes-Benz E-Class">
+            <div class="car-details">
+                <a href="{% url 'benz5' %}">Mercedes-Benz E-Class</a>
+                <p class="price">Rs.72.80 - 89.15 Lakh* (Price in Bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Diesel / Petrol</span>
+                    <span>Mileage: 16.1 kmpl</span>
+                    <span>Transmission: Automatic</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <script src="{% static 'js/inventory.js' %}"></script>
+</body>
+</html>

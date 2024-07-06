@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Add your CSS styles here -->
+    <link rel="stylesheet" href="{% static 'CSS/dashboard.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Main heading for the dashboard -->
+        <h2>Welcome to Your Dashboard</h2>
+        
+        <!-- Display user information or any other relevant content -->
+        <div>
+            <p>Hello, {{ user.username }}!</p>
+            <p>Your email: {{ user.email }}</p>
+            <!-- Add more user-related information here -->
+        </div>
+        
+        <!-- Add any dashboard-specific content or actions -->
+        <div>
+            <p>Here you can:</p>
+            <ul>
+                <li>View and manage your profile</li>
+                <li>Access personalized content</li>
+                <li>Perform actions specific to your account</li>
+                <!-- Add more dashboard actions or features -->
+            </ul>
+        </div>
+        
+        <!-- Add navigation links or buttons -->
+        <div>
+            <a href="{% url 'logout' %}">Logout</a>
+            <!-- Add more navigation links as needed -->
+        </div>
+    </div>
+    <!-- Include any JavaScript libraries needed for the page -->
+    <script src="{% static 'JS/dashboard.js' %}"></script>
+    <!-- Add your custom JavaScript code here -->
+    <script>
+        // Add any custom JavaScript code for the dashboard page
+    </script>
+</body>
+</html>

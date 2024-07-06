@@ -1,0 +1,190 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kia Cars</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/inventory.css' %}">
+    <style>
+        /* Custom styles for car list */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #e9f5e9; /* Background color for the car box */
+            border: 1px solid #2c3e50; /* Border color */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Spacing inside the car box */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a 3D effect */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+            position: relative; /* Positioning for pseudo-elements */
+            overflow: hidden; /* Ensure pseudo-elements are contained */
+        }
+
+        li:hover {
+            transform: scale(1.05); /* Enlarge the car box on hover */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Adjusted box shadow on hover */
+        }
+
+        .car-image {
+            max-width: 120px; /* Adjust the size as needed */
+            margin-right: 20px;
+            border-radius: 10px; /* Rounded corners for the image */
+            transition: transform 0.2s ease;
+        }
+
+        li:hover .car-image {
+            transform: scale(1.1); /* Slightly enlarge the car image on hover */
+        }
+
+        .car-details {
+            flex: 1;
+        }
+
+        /* Additional CSS for better styling */
+        .car-details a {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50; /* Link color */
+            text-decoration: none;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
+        }
+
+        .car-details a:hover {
+            color: #27ae60; /* Change link color on hover */
+            text-shadow: 0 0 5px rgba(39, 174, 96, 0.5); /* Add text shadow on hover */
+        }
+
+        .car-details p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #2c3e50; /* Text color */
+            transition: color 0.2s ease;
+        }
+
+        li:hover .car-details p {
+            color: #1a252f; /* Darken text color on hover */
+        }
+
+        /* Adding edge-cutting effects with pseudo-elements */
+        li::before,
+        li::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #27ae60;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+
+        li::before {
+            top: 0;
+            left: -100%;
+            transform: skewX(30deg);
+        }
+
+        li::after {
+            bottom: 0;
+            right: -100%;
+            transform: skewX(-30deg);
+        }
+
+        li:hover::before {
+            left: 100%;
+        }
+
+        li:hover::after {
+            right: 100%;
+        }
+
+        li .car-details {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Enhanced styles for price and additional details */
+        .price {
+            font-size: 20px;
+            color: #27ae60; /* Price color */
+            font-weight: bold;
+        }
+
+        .details {
+            font-size: 16px;
+            color: #2c3e50; /* Details color */
+        }
+
+        .details span {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kia Cars</h1>
+
+    <ul>
+        <li>
+            <img class="car-image" src="{% static 'images/seltos1.webp' %}" alt="Kia Seltos">
+            <div class="car-details">
+                <a href="{% url 'kia1' %}">Kia Seltos</a>
+                <p class="price">Rs.10.90 - 20.35 Lakh* (Price in bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Diesel / Petrol</span>
+                    <span>Mileage: 17 to 20.7 kmpl</span>
+                    <span>Transmission: Manual/Automatic</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/sonet1.webp' %}" alt="Kia Sonet">
+            <div class="car-details">
+                <a href="{% url 'kia2' %}">Kia Sonet</a>
+                <p class="price">Rs.7.99 - 15.75 Lakh* (Price in bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Diesel / Petrol</span>
+                    <span>Transmission: Manual/Automatic</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/ev1.webp' %}" alt="Kia EV6">
+            <div class="car-details">
+                <a href="{% url 'kia3' %}">Kia EV6</a>
+                <p class="price">Rs.60.95 - 65.95 Lakh* (Price in bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Electric</span>
+                    <span>Mileage: 708 km</span>
+                    <span>Battery: 77.4 kWh</span>
+                    <span>Transmission: Automatic</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/carens1.webp' %}" alt="Kia Carens">
+            <div class="car-details">
+                <a href="{% url 'kia4' %}">Kia Carens</a>
+                <p class="price">Rs.10.52 - 19.67 Lakh* (Price in bengaluru)</p>
+                <div class="details">
+                    <span>Fuel: Diesel / Petrol</span>
+                    <span>Transmission: Manual/Automatic</span>
+                    <span>Check May Offers</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <script src="{% static 'js/inventory.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand 1 Cars</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/inventory.css' %}">
+    <style>
+        /* Custom styles for car list */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #f5f5f5; /* Background color for the car box */
+            border: 1px solid #ccc; /* Border for the car box */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Spacing inside the car box */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a 3D effect */
+            transition: transform 0.2s ease; /* Smooth hover effect */
+        }
+
+        li:hover {
+            transform: scale(1.02); /* Enlarge the car box on hover */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Adjusted box shadow on hover */
+        }
+
+        .car-image {
+            max-width: 120px; /* Adjust the size as needed */
+            margin-right: 20px;
+        }
+
+        .car-details {
+            flex: 1;
+        }
+
+        /* Additional CSS for better styling */
+        .car-details a {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .car-details a:hover {
+            color: #ff6600; /* Change link color on hover */
+        }
+
+        .car-details p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Brand 1 Cars</h1>
+
+    <ul>
+        <li>
+            <img class="car-image" src="{% static 'images/tata1.webp' %}" alt="Car 1 Image">
+            <div class="car-details">
+                <a href="{% url 'tata1' %}">Car 1</a>
+                <p>Price: $25,000</p>
+                <p>Mileage: 30 mpg</p>
+                <p>Year: 2023</p>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/tata1.webp' %}" alt="Car 1 Image">
+            <div class="car-details">
+                <a href="{% url 'tata1' %}">Car 1</a>
+                <p>Price: $25,000</p>
+                <p>Mileage: 30 mpg</p>
+                <p>Year: 2023</p>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/tata1.webp' %}" alt="Car 1 Image">
+            <div class="car-details">
+                <a href="{% url 'tata1' %}">Car 1</a>
+                <p>Price: $25,000</p>
+                <p>Mileage: 30 mpg</p>
+                <p>Year: 2023</p>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/tata1.webp' %}" alt="Car 1 Image">
+            <div class="car-details">
+                <a href="{% url 'tata1' %}">Car 1</a>
+                <p>Price: $25,000</p>
+                <p>Mileage: 30 mpg</p>
+                <p>Year: 2023</p>
+            </div>
+        </li>
+        <li>
+            <img class="car-image" src="{% static 'images/tata1.webp' %}" alt="Car 1 Image">
+            <div class="car-details">
+                <a href="{% url 'tata2' %}">Car 1</a>
+                <p>Price: $25,000</p>
+                <p>Mileage: 30 mpg</p>
+                <p>Year: 2023</p>
+            </div>
+        </li>
+    </ul>
+
+    <script src="{% static 'js/inventory.js' %}"></script>
+
+</body>
+</html>
+
